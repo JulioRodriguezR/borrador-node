@@ -1,7 +1,7 @@
 {
-    "tagets": [
+    "targets": [
         {
-            "target": "addon",
+            "target_name": "addon",
             "sources": [ "hello.cc" ]
         }
     ]
