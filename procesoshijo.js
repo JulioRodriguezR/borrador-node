@@ -8,15 +8,15 @@
 
 var { exec, spawn } = require("child_process");
 
-exec("node controlerror.js", (err, stdout, sterr) => {
-  if (err) {
-    console.error(err);
-    return false;
-  }
+// exec("node controlerror.js", (err, stdout, sterr) => {
+//   if (err) {
+//     console.error(err);
+//     return false;
+//   }
 
-  console.log("run srcipt...");
-  console.log(stdout);
-});
+//   console.log("run srcipt...");
+//   console.log(stdout);
+// });
 
 let child = spawn("dir", [], { shell: true });
 
@@ -26,6 +26,13 @@ child.stdout.on("data", (data) => {
 });
 
 child.on("exit", () => {
+  // una vez que se haya desconectado totalmente del event loop
   console.log("end process...");
   console.log(child.killed);
+});
+
+// Escuchar excepción
+process.on("uncaughtException", (err, from) => {
+  console.error("Error in code");
+  console.error(err);
 });
